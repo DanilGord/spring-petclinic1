@@ -13,9 +13,6 @@ pipeline {
                 }
             }
         }
-
-    }
-    stages {
         stage('get public IP') {
             steps {
                 script{
@@ -31,7 +28,6 @@ pipeline {
                 }
             }
         }
-    stages {
         stage('triger ansible') {
             steps {
                 script{
