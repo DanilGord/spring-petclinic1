@@ -1,0 +1,19 @@
+---
+
+- name: Playbook
+  hosts: all
+  become: yes #все команды будут запускатся и з под рута
+  tasks:
+
+    - name: copying file with playbook #jar file copy on ec2
+      copy:
+        src: target/spring-petclinic-2.7.0-SNAPSHOT.jar
+        dest: /spring-petclinic1/target/
+        mode: 0755
+
+    - name: restart systemd
+      systemd:
+        name: petservise
+        state: restarted
+        enabled: true
+        daemon_reload: true
