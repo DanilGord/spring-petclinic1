@@ -30,7 +30,7 @@ pipeline {
         stage('triger ansible') {
             steps {
                 script{
-                  sh "ansible-playbook -i host.txt playbook.yaml"
+                  sh "/usr/local/bin/ansible-playbook -i host.txt playbook.yaml"
                 }
             }
         }
