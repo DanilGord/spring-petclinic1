@@ -9,6 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 script{
+                  sh "pwd"
                   sh "./mvnw package"
                 }
             }
