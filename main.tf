@@ -327,7 +327,7 @@ resource "aws_elb" "pet-elb" {
   }
 }
 
-######## outputs #########
+######## outputs ##########
 
 output "elb-dns-name" {
   value = aws_elb.pet-elb.dns_name
