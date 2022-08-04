@@ -1,0 +1,11 @@
+[Unit]
+Description=servise for petclinic
+
+[Service]
+User=root
+WorkingDirectory=/spring-petclinic1
+ExecStart=/spring-petclinic1/startpet.sh
+
+[Install]
+
+WantedBy=multi-user.target
