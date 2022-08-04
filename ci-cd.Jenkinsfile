@@ -17,8 +17,8 @@ pipeline {
             steps {
                 script{
                   sh """
-                     export PUBLIC_IP1=\$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text); \
-                     export PUBLIC_IP2=\$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text); \
+                     export PUBLIC_IP1=\$(/usr/local/bin/aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text); \
+                     export PUBLIC_IP2=\$(/usr/local/bin/aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query 'Reservations[0].Instances[0].[PublicIpAddress]' --output text); \
                      sed -i "s/server1/\$PUBLIC_IP1/g" /Users/mac/.jenkins/workspace/ci-cd-petclinic/host.txt; \
                      sed -i "s/server2/\$PUBLIC_IP2/g" /Users/mac/.jenkins/workspace/ci-cd-petclinic/host.txt; \
                      cat /Users/mac/.jenkins/workspace/ci-cd-petclinic/host.txt;
